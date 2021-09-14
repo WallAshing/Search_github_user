@@ -9,8 +9,8 @@
 <body>
       <main>
             <form action="" method="POST">
-                  <input type="text" placeholder="Search a github user" name="username">
-                  <button>Search!</button>
+                  <input type="text" placeholder="Search a github user" name="username" id="searchInput">
+                  <button id="submit">Search!</button>
             </form>
 
             <div id="result">
@@ -24,16 +24,24 @@
             
             const octokit = new Octokit({ auth: `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` });
             
-            const users = await octokit.request('GET /user');
+
+
+            console.log(user.data.items[0]);
             
-            console.log(users.data);
-            
-            
-            for (let index = 0; index < users.data.length; index++) {
-                  console.log(users.data[index].login);
+            function Search(e){
+                  e.preventDefault();
+                  console.log("click");
+                  let username = document.getElementById("searchInput").value;
+                  console.log(username);
+                  let user = await octokit.request('GET /search/users',{
+                        q:"sverker92",
+                  });
             }
+
+            document.getElementById("submit").addEventListener("click", Search)
             
       </script>
+      <script></script>
 
 </body>
 </html>
