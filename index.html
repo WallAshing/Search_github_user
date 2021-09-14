@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
 <script type="module">
 import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
-<scipt/>
+
+const octokit = new Octokit({ auth: `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` });
+
+const users = await octokit.request('GET /users/sverker92')
+
+console.log(users.data)
+
+</script>
+</body>
+</html>
+
