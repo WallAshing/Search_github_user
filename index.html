@@ -12,13 +12,28 @@
                   <input type="text" placeholder="Search a github user" name="username">
                   <button>Search!</button>
             </form>
+
+            <div id="result">
+
+            </div>
       </main>
+
+      
+      <script type="module">
+            import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+            
+            const octokit = new Octokit({ auth: `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` });
+            
+            const users = await octokit.request('GET /user');
+            
+            console.log(users.data);
+            
+            
+            for (let index = 0; index < users.data.length; index++) {
+                  console.log(users.data[index].login);
+            }
+            
+      </script>
+
 </body>
 </html>
-
-
-
-
-<script type="module">
-import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
-<scipt/>
