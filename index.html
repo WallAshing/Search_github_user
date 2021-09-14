@@ -13,22 +13,26 @@
                   <button>Search!</button>
             </form>
       </main>
-</body>
-</html>
-
-
-
 
 <script type="module">
-import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+    // require('dotenv').config()
 
-const octokit = new Octokit({ auth: `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` });
-
-const users = await octokit.request('GET /users/sverker92')
-
-console.log(users.data)
+    import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+    
+    // const TOKEN = process.env.TOKEN
+    const octokit = new Octokit({ auth: "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" });
+    
+    const users = await octokit.request('GET /search/users', {
+        q: 'sverke',
+        per_page: 5
+    })
+    
+    for (let index = 0; index < users.data.items.length; index++) {
+        console.log(users.data.items[index].login)
+    }
 
 </script>
+
 </body>
 </html>
 
