@@ -22,20 +22,36 @@
       <script type="module">
             import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
             
-            const octokit = new Octokit({ auth: `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` });
+            const octokit = new Octokit({ auth: `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` });
             
+            const resultDiv = document.getElementById("result");
 
-
-            console.log(user.data.items[0]);
             
-            function Search(e){
+            
+            async function Search(e){
                   e.preventDefault();
                   console.log("click");
                   let username = document.getElementById("searchInput").value;
                   console.log(username);
-                  let user = await octokit.request('GET /search/users',{
-                        q:"sverker92",
-                  });
+                        let user = await octokit.request('GET /search/users',{
+                              q:username,
+                        });
+                        console.log(user.data.items[0]);
+
+                        let title = document.createElement("h1");
+                        let titleContent = document.createTextNode("Search Result")
+                        title.appendChild(titleContent);
+                        resultDiv.append(title);
+
+                        let p = document.createElement("p");
+                        p.innerHTML = "User name : " + user.data.items[0].login;
+                        resultDiv.append(p);
+                        
+                        let a = document.createElement("a");
+                        a.innerHTML = "Github Link";
+                        a.href = user.data.items[0].html_url;
+                        a.title = "github link";
+                        resultDiv.append(a);
             }
 
             document.getElementById("submit").addEventListener("click", Search)
