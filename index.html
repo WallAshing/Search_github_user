@@ -36,13 +36,15 @@
             <div id="result"></div>
       </main>
 
+<script src="vars.js"></script>
+
 <script type="module">
       // require('dotenv').config()
       import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
       
       // const TOKEN = process.env.TOKEN
       const list = document.getElementById("username-list") //get the datalist element
-      const octokit = new Octokit({ auth: "TOKEN" }); //initialize octokit with our token
+      const octokit = new Octokit({ auth: tokens.auth }); //initialize octokit with our token
 
       document.addEventListener('keyup', async () => {
 
@@ -74,7 +76,7 @@
             
             async function Search(e){
                   e.preventDefault();
-                  console.log("click");
+                  document.getElementById("usr-btn").innerHTML = "";
                   let username = document.getElementById("usr-fld").value;
                   console.log(username);
                         let user = await octokit.request('GET /search/users',{
@@ -98,7 +100,7 @@
                         resultDiv.append(a);
             }
 
-            document.getElementById("usr-btn").addEventListener("click", Search)
+            document.getElementById("usr-btn").addEventListener("click", Search);
             
       </script>
 
