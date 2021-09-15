@@ -11,6 +11,11 @@
             <form action="" method="POST">
                   <input id="username-input" autocomplete="off" list="username-list" type="text" placeholder="Search a github user" name="username">
                   <datalist id="username-list">
+                        <option value="sver">
+                        <option value="sverkrer">
+                        <option value="sverkenis">
+                        <option value="sverk92">
+                        <option value="sverker92">
                   </datalist>
                   <button>Search!</button>
             </form>
@@ -22,30 +27,30 @@
       
       // const TOKEN = process.env.TOKEN
       const list = document.getElementById("username-list") //get the datalist element
-      const octokit = new Octokit({ auth: "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" }); //initialize octokit with our token
+      const octokit = new Octokit({ auth: "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" }); //initialize octokit with our token
 
       document.addEventListener('keyup', async () => {
-            for(let i = 0; i < 5; i++) {
-                  if(document.getElementById(i)){ //Essayer d'opti ça pour ne pas avoir 5 verif mais remove uniquement le nombre d'option créé
-                        let toRemove = document.getElementById(i)
-                        toRemove.remove()
+
+            if(document.getElementById("username-input").value){
+                  let users = await octokit.request('GET /search/users', {
+                        q: document.getElementById("username-input").value,
+                        per_page: 5
+                  })//get informations through API
+                  console.log(users)
+
+                  let datalist = document.getElementById("username-list")
+                  datalist.innerHTML = ""
+                  
+                  for (let j = 0; j < users.data.items.length; j++) {
+                        let option = document.createElement('option')
+                        option.setAttribute('value', users.data.items[j].login)
+                        option.setAttribute('id', j)
+                        list.appendChild(option)
+                        console.log(users.data.items[j].login)
                   }
-            }
-            
-            let users = await octokit.request('GET /search/users', {
-                  q: document.getElementById("username-input").value,
-                  per_page: 5
-            })//get informations through API
 
-            console.log(users)
-
-            for (let j = 0; j < users.data.items.length; j++) {
-                  let option = document.createElement('option')
-                  option.setAttribute('value', users.data.items[j].login)
-                  option.setAttribute('id', j)
-                  list.appendChild(option)
-                  console.log(users.data.items[j].login)
             }
+
       })
 
 </script>
