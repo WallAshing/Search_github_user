@@ -1,0 +1,24 @@
+{
+  "name": "github_search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WallAshing/Search_github_user.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WallAshing/Search_github_user/issues"
+  },
+  "homepage": "https://github.com/WallAshing/Search_github_user#readme"
+}
