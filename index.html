@@ -32,6 +32,8 @@
                   <button id="usr-btn">Rechercher !</button>
             </form>
             </div>
+
+            <div id="result"></div>
       </main>
 
 <script type="module">
@@ -65,8 +67,40 @@
             }
 
       })
+            
+            const resultDiv = document.getElementById("result");
 
-</script>
+            
+            
+            async function Search(e){
+                  e.preventDefault();
+                  console.log("click");
+                  let username = document.getElementById("usr-fld").value;
+                  console.log(username);
+                        let user = await octokit.request('GET /search/users',{
+                              q:username,
+                        });
+                        console.log(user.data.items[0]);
+
+                        let title = document.createElement("h1");
+                        let titleContent = document.createTextNode("Search Result")
+                        title.appendChild(titleContent);
+                        resultDiv.append(title);
+
+                        let p = document.createElement("p");
+                        p.innerHTML = "User name : " + user.data.items[0].login;
+                        resultDiv.append(p);
+                        
+                        let a = document.createElement("a");
+                        a.innerHTML = "Github Link";
+                        a.href = user.data.items[0].html_url;
+                        a.title = "github link";
+                        resultDiv.append(a);
+            }
+
+            document.getElementById("usr-btn").addEventListener("click", Search)
+            
+      </script>
 
 </body>
 </html>
