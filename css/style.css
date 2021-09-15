@@ -13,6 +13,10 @@ h2 {
     padding: 20px;
 }
 
+h3 {
+    padding: 10px;
+}
+
 body {
     font-family: 'Urbanist', sans-serif;
 }
@@ -40,6 +44,10 @@ ul {
 }
 li {
     float: left;
+    border-right: 1px solid #CCCCCC;
+}
+li:last-child {
+    border-right: none;
 }
 li a {
     display: block;
@@ -64,11 +72,34 @@ li a:hover:not(.active) {
 }
 form {
     display: inline-block;
-    background-color: red;
-}
-#usr-fld {
+    /* background-color: red; */
     
 }
+#usr-fld {
+    margin: 0;
+    padding: 10px 20px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 20px;
+    border: 1px solid #CCCCCC;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+#usr-fld:focus {
+    border: 1px solid #CCCCCC;
+}
 #usr-btn {
-
+    margin: 0;
+    padding: 10px 20px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: white;
+    background-color: #035537;
+    transition: 0.3s;
+    border: 1px solid #CCCCCC;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+#usr-btn:hover {
+    background-color: #04AA6D;
 }
