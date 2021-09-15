@@ -11,11 +11,6 @@
             <form action="" method="POST">
                   <input id="username-input" autocomplete="off" list="username-list" type="text" placeholder="Search a github user" name="username">
                   <datalist id="username-list">
-                        <option value="sver">
-                        <option value="sverkrer">
-                        <option value="sverkenis">
-                        <option value="sverk92">
-                        <option value="sverker92">
                   </datalist>
                   <button>Search!</button>
             </form>
@@ -27,7 +22,7 @@
       
       // const TOKEN = process.env.TOKEN
       const list = document.getElementById("username-list") //get the datalist element
-      const octokit = new Octokit({ auth: "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" }); //initialize octokit with our token
+      const octokit = new Octokit({ auth: "TOKEN" }); //initialize octokit with our token
 
       document.addEventListener('keyup', async () => {
 
