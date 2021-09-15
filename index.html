@@ -4,14 +4,32 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="css/style.css">
       <title>Git user search</title>
 </head>
 <body>
+      <header>
+            <div class="pre-navbar">
+                  <h1> Projet 14/09/2021 -> Github User Search </h1>
+                  <h2> Recherche d'utilisateurs Github à l'aide de l'API Github </h2>
+            </div>
+            
+            <ul>
+                  <li><a class="active" href="#home"> Accueil </a></li>
+                  <li><a href="#news"> Nouveautés </a></li>
+                  <li><a href="#about"> À propos de nous </a></li>
+                  <li style="float: right"><a href="#contact"> Contact </a></li>
+            </ul>
+      </header>
+
       <main>
+            <div id="center-form">
+                  <h3> Entre le nom de l'utilisateur que tu souhaites rechercher </h3>
             <form action="" method="POST">
-                  <input type="text" placeholder="Search a github user" name="username">
-                  <button>Search!</button>
+                  <input type="text" id="usr-fld" placeholder="Dark Sasuke" name="username">
+                  <button id="usr-btn">Rechercher !</button>
             </form>
+            </div>
       </main>
 </body>
 </html>
