@@ -26,28 +26,45 @@
             <div id="center-form">
                   <h3> Entre le nom de l'utilisateur que tu souhaites rechercher </h3>
             <form action="" method="POST">
-                  <input type="text" id="usr-fld" placeholder="Dark Sasuke" name="username">
+                  <input id="usr-fld" autocomplete="off" list="username-list" type="text" placeholder="Search a github user" name="username">
+                  <datalist id="username-list">
+                  </datalist>
                   <button id="usr-btn">Rechercher !</button>
             </form>
             </div>
       </main>
 
 <script type="module">
-    // require('dotenv').config()
+      // require('dotenv').config()
+      import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+      
+      // const TOKEN = process.env.TOKEN
+      const list = document.getElementById("username-list") //get the datalist element
+      const octokit = new Octokit({ auth: "TOKEN" }); //initialize octokit with our token
 
-    import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
-    
-    // const TOKEN = process.env.TOKEN
-    const octokit = new Octokit({ auth: "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" });
-    
-    const users = await octokit.request('GET /search/users', {
-        q: 'sverke',
-        per_page: 5
-    })
-    
-    for (let index = 0; index < users.data.items.length; index++) {
-        console.log(users.data.items[index].login)
-    }
+      document.addEventListener('keyup', async () => {
+
+            if(document.getElementById("usr-fld").value){
+                  let users = await octokit.request('GET /search/users', {
+                        q: document.getElementById("usr-fld").value,
+                        per_page: 5
+                  })//get informations through API
+                  console.log(users)
+
+                  let datalist = document.getElementById("username-list")
+                  datalist.innerHTML = ""
+                  
+                  for (let j = 0; j < users.data.items.length; j++) {
+                        let option = document.createElement('option')
+                        option.setAttribute('value', users.data.items[j].login)
+                        option.setAttribute('id', j)
+                        list.appendChild(option)
+                        console.log(users.data.items[j].login)
+                  }
+
+            }
+
+      })
 
 </script>
 
