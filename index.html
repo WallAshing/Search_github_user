@@ -41,6 +41,7 @@
 <script type="module">
       // require('dotenv').config()
       import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+      import { tokens } from "./vars.js";
       
       // const TOKEN = process.env.TOKEN
       const list = document.getElementById("username-list") //get the datalist element
@@ -76,7 +77,7 @@
             
             async function Search(e){
                   e.preventDefault();
-                  document.getElementById("usr-btn").innerHTML = "";
+                  resultDiv.innerHTML = "";
                   let username = document.getElementById("usr-fld").value;
                   console.log(username);
                         let user = await octokit.request('GET /search/users',{
