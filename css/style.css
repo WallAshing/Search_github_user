@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    padding: 40px;
+}
+
+h2 {
+    padding: 20px;
+}
+
+h3 {
+    padding: 10px;
+}
+
+body {
+    font-family: 'Urbanist', sans-serif;
+}
+
+/* HEADER */
+
+header {
+    margin-bottom: 10vh;
+}
+.pre-navbar {
+    padding: 15px;
+    text-align: center;
+    background-color: #F1F1F1;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+li {
+    float: left;
+    border-right: 1px solid #CCCCCC;
+}
+li:last-child {
+    border-right: none;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.5s;
+}
+li a:hover:not(.active) {
+    background-color: #111;
+}
+  
+.active {
+    background-color: #04AA6D;
+}
+
+/* FORM */
+
+#center-form {
+    text-align: center;
+}
+form {
+    display: inline-block;
+    /* background-color: red; */
+    
+}
+#usr-fld {
+    margin: 0;
+    padding: 10px 20px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 20px;
+    border: 1px solid #CCCCCC;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+#usr-fld:focus {
+    border: 1px solid #CCCCCC;
+}
+#usr-btn {
+    margin: 0;
+    padding: 10px 20px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: white;
+    background-color: #035537;
+    transition: 0.3s;
+    border: 1px solid #CCCCCC;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+#usr-btn:hover {
+    background-color: #04AA6D;
+}
